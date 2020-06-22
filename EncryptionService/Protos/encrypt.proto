@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "EncryptionService";
+
+package encrypt;
+
+// The service definition.
+service Cypher {
+  // Sends data to encrypt
+  rpc Encrypt (PlainTextData) returns (EncryptedData);
+  rpc Decrypt (EncryptedData) returns (PlainTextData);
+}
+
+// The request message containing the data in plain text.
+message PlainTextData {
+  string userName = 1;
+  string password = 2;
+}
+
+// The response message containing the encrypted data.
+message EncryptedData {
+  string userName = 1;
+  string password = 2;
+}
